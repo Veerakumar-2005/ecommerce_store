@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Local Store – Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Welcome to Our Local Store</h1>
+    <a href="/cart" class="button">🛒 View Cart</a>
+  </header>
+  <div class="container">
+    {% for product in products %}
+      <div class="product-card">
+        <img src="{{ product.image }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p><strong>₹{{ product.price }}</strong></p>
+        <a href="/product/{{ product.id }}">View</a> |
+        <a href="/add_to_cart/{{ product.id }}">Add to Cart</a>
+      </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
